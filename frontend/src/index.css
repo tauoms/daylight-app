@@ -67,3 +67,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+canvas {
+  width: 100% !important; /* Adjust width to be responsive */
+  height: 400px !important; /* Adjust height as needed */
+}
