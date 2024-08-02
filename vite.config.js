@@ -10,8 +10,15 @@ export default defineConfig({
     build: {
         rollupOptions: {
             input: {
-                app: './frontend/src/main.jsx'
+                app: 'frontend/src/main.jsx'
             },
-        }
+            output: {
+                entryFileNames: '[name].js', // Use '[name].js' to avoid hashed filenames
+                chunkFileNames: '[name].js',
+                assetFileNames: '[name].[ext]'
+            }
+        },
+        outDir: 'public/build', // Ensure this matches your Symfony setup
     },
+        
 });

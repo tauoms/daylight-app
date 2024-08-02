@@ -3,7 +3,6 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
   LineElement,
   PointElement,
   Title,
@@ -16,7 +15,6 @@ import PropTypes from "prop-types";
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  BarElement,
   LineElement,
   PointElement,
   Title,
@@ -25,12 +23,15 @@ ChartJS.register(
 );
 
 const DaylightChart = ({
-  daylightChanges,
-  cityName,
-  daylightChanges2,
-  cityName2,
+  daylightChanges = { daylightChanges: {} },
+  cityName = "Unknown City",
+  daylightChanges2 = { daylightChanges: {} },
+  cityName2 = "Unknown City",
 }) => {
-  // Convert daylightChanges to the format needed by Chart.js
+  if (!daylightChanges || !daylightChanges.daylightChanges) {
+    return <p>No data available for {cityName}.</p>;
+  }
+
   const labels = Object.keys(daylightChanges.daylightChanges);
   const data = Object.values(daylightChanges.daylightChanges).map((duration) =>
     convertToMinutes(duration)
@@ -64,7 +65,6 @@ const DaylightChart = ({
   return <Chart type="line" data={chartData} />;
 };
 
-// Helper function to convert duration string to total minutes
 const convertToMinutes = (duration) => {
   if (typeof duration === "string" && duration.includes(" hours ")) {
     const parts = duration.split(" ");
@@ -76,9 +76,13 @@ const convertToMinutes = (duration) => {
 };
 
 DaylightChart.propTypes = {
-  daylightChanges: PropTypes.object.isRequired,
+  daylightChanges: PropTypes.shape({
+    daylightChanges: PropTypes.object,
+  }).isRequired,
   cityName: PropTypes.string.isRequired,
-  daylightChanges2: PropTypes.object,
+  daylightChanges2: PropTypes.shape({
+    daylightChanges: PropTypes.object,
+  }),
   cityName2: PropTypes.string,
 };
 
