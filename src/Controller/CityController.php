@@ -130,15 +130,25 @@ class CityController extends AbstractController
     private function calculateDaylightChanges($coordinates): array
     {
         $daylightChanges = [];
-        $startDate = new \DateTime("first day of January this year");
-        $endDate = new \DateTime("last day January this year");
-
+        $startDate = new \DateTime();
+        $endDate = new \DateTime("+7 days");
+    
+        // Log start and end dates for debugging
+        error_log("Start Date: " . $startDate->format("Y-m-d"));
+        error_log("End Date: " . $endDate->format("Y-m-d"));
+    
         for ($date = $startDate; $date <= $endDate; $date->modify("+1 day")) {
+            // Log current date for debugging
+            error_log("Fetching data for: " . $date->format("Y-m-d"));
+    
             $daylightData = $this->fetchDaylightData(
                 $coordinates,
                 $date->format("Y-m-d")
             );
-
+    
+            // Log fetched data for debugging
+            error_log("Daylight Data: " . print_r($daylightData, true));
+    
             if (!empty($daylightData["results"])) {
                 // Convert sunrise and sunset to local time zone
                 $sunriseLocal = (new \DateTime(
@@ -153,7 +163,7 @@ class CityController extends AbstractController
                 ))
                     ->setTimezone(new \DateTimeZone("Europe/Helsinki"))
                     ->format("H:i:s");
-
+    
                 $dayLength = (new \DateTime($sunsetLocal))->diff(
                     new \DateTime($sunriseLocal)
                 );
@@ -162,7 +172,10 @@ class CityController extends AbstractController
                 );
             }
         }
-        // Return the daylight changes along with the local sunrise and sunset times
+    
+        // Log final daylightChanges array for debugging
+        error_log("Final Daylight Changes: " . print_r($daylightChanges, true));
+    
         return [
             "daylightChanges" => $daylightChanges,
         ];
