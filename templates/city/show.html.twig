@@ -14,12 +14,12 @@
 		and
 		{{ cityName2|capitalize }}</h1>
 
-	<div id="react-root" data-city-name="{{ cityName }}" data-city-name2="{{ cityName2 }}"></div>
+	<div id="root" data-city-name="{{ cityName }}" data-city-name2="{{ cityName2 }}"></div>
 
 {% endblock %}
 
 {% block javascripts %}
 	{{ parent() }}
-	{{ vite_entry_script_tags('/frontend/src/main.jsx') }}
+	{{ vite_entry_script_tags('app') }}
 	<!-- Load the React app -->
 {% endblock %}

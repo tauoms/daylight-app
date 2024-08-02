@@ -8,7 +8,7 @@ const App = () => {
   const [cityName2, setCityName2] = useState("");
 
   // Get city names from the DOM
-  const reactRoot = document.getElementById("react-root");
+  const reactRoot = document.getElementById("root");
   const cityNameAttr = reactRoot.getAttribute("data-city-name");
   const cityName2Attr = reactRoot.getAttribute("data-city-name2");
 
