@@ -14,8 +14,8 @@ Daylight app using Symfony 7. Input two city names and get the daylight length d
 ## Setup and usage
 
 - Clone repository
-- Run `composer install`
-- Run `npm install`
+- Run `composer install` in root
+- Run `npm install` in root
 - Rename ".env.example" to ".env" and input your Geocode API key (https://geocode.maps.co/)
 - Run `npm run dev` and `symfony serve` in root and browse to the localhost address of the symfony project
 
