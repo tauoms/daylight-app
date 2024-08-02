@@ -13,5 +13,4 @@
 /node_modules/
 /public/build/
 .env
-.env.*
 ###< pentatrion/vite-bundle ###
