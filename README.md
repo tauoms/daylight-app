@@ -23,6 +23,6 @@ Daylight app using Symfony 7. Input two city names and get the daylight length d
 
 ![Screenshot 2024-08-02 at 14 11 20](https://github.com/user-attachments/assets/d8011567-55f9-44bd-afa8-885cba844dfe)
 
-## Authors and acknowledgment
+## Authors and acknowledgments
 
 The project is largely based on Santosh Kalwar's code (https://github.com/kalwar/daylight_app)
