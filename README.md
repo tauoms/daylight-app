@@ -1,5 +1,7 @@
 # Daylight App
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=tauoms_daylight-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=tauoms_daylight-app)
+
 ## Description
 
 Daylight app using Symfony 7. Input two city names and get the daylight length differences for the next week.
